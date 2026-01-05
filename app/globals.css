@@ -3,8 +3,24 @@
 ======================================== */
 
 :root {
-  --color-neutral-darkest: #000;
-  --color-white: #fff;
+  --color-white: #ffffff;
+  --color-gray-100: #f7f7f7;
+  --color-gray-200: #f2f4f7;
+  --color-gray-300: #dadde1;
+  --color-red-500: #d84343;
+  --color-red-600: #e44848;
+  --color-gray-500: #6c717b;
+  --color-gray-600: #475467;
+  --color-gray-900: #101828;
+  --color-yellow: #ffc531;
+
+  --main: var(--color-gray-900);
+  --text: var(--color-gray-600);
+  --inputs: var(--color-gray-100);
+  --badges: var(--color-gray-200);
+  --button: var(--color-red-600);
+  --button-hover: var(--color-red-500);
+  --rating: var(--color-yellow);
 }
 
 /* =====================================
@@ -20,14 +36,14 @@ html {
 }
 
 body {
-  font-family: var(--font-roboto), sans-serif;
+  font-family: var(--font-inter), sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
   background-color: var(--color-white);
 
-  color: var(--color-neutral-darkest);
+  color: var(--text);
   line-height: 150%;
 
   transition: all 250ms ease;
@@ -100,9 +116,9 @@ textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-  -webkit-text-fill-color: var(--color-neutral-darkest);
+  -webkit-text-fill-color: var(--text);
   transition: all 5000s ease-in-out 0s;
-  caret-color: var(--color-neutral-darkest);
+  caret-color: var(--text);
 }
 
 /* =====================================
