@@ -46,6 +46,17 @@
 .like {
   background-color: transparent;
   border: none;
+
+  transition: all 250ms ease;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
 }
 
 .likeIcon {
@@ -203,6 +214,8 @@
   .categoriesTruck {
     justify-content: unset;
     gap: 8px;
+    max-height: 104px;
+    overflow: hidden;
   }
 
   .categoryText {

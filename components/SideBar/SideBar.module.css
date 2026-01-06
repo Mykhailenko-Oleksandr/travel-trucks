@@ -1,0 +1,129 @@
+.sidebar {
+  max-width: 360px;
+}
+
+.cityLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--color-gray-500);
+  margin-bottom: 40px;
+}
+
+.inputBox {
+  position: relative;
+}
+
+.cityInput {
+  border-radius: 12px;
+  padding: 16px 20px 16px 48px;
+  width: 100%;
+  background-color: var(--inputs);
+  border: none;
+  outline: none;
+
+  line-height: 150%;
+  color: var(--main);
+
+  &::placeholder {
+    color: var(--color-gray-500);
+  }
+}
+
+.inputIcon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  fill: var(--color-gray-500);
+}
+
+.cityInput:not(:placeholder-shown) + .inputIcon {
+  fill: var(--main);
+}
+
+.filterTitle {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 32px;
+}
+
+.filterLabel {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--main);
+  margin-bottom: 24px;
+}
+
+.vehicleFilterBox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+
+  padding-top: 24px;
+  border-top: 1px solid var(--color-gray-300);
+  margin-bottom: 32px;
+
+  &:last-of-type {
+    margin-bottom: 40px;
+  }
+}
+
+.filterBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background-color: transparent;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 12px;
+  height: 96px;
+  mix-blend-mode: multiply;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--main);
+
+  flex-basis: calc((100% - 24px) / 3);
+}
+
+.iconBtn {
+  fill: var(--main);
+}
+
+.accent {
+  border-color: var(--button);
+}
+
+.formBtn {
+  display: inline-block;
+  border-radius: 200px;
+  padding: 16px 49px;
+  background-color: var(--button);
+  border: none;
+  outline: none;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+
+  transition: color 250ms ease;
+
+  &:hover,
+  &:focus {
+    background-color: var(--button-hover);
+  }
+
+  &:active {
+    background-color: var(--button);
+  }
+}
