@@ -1,6 +1,3 @@
-.header {
-}
-
 .headerContainer {
   display: flex;
   align-items: center;
@@ -23,9 +20,6 @@
   &:active {
     transform: scale(1);
   }
-}
-
-.logoIcon {
 }
 
 .menuBtn {
@@ -76,7 +70,23 @@
 
 @media only screen and (min-width: 768px) {
   .headerContainer {
+    position: relative;
     height: unset;
+  }
+
+  .logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &:hover,
+    &:focus {
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    &:active {
+      transform: translateY(-50%) scale(1);
+    }
   }
 
   .menuBtn {
@@ -89,7 +99,4 @@
     gap: 32px;
     margin: 0 auto;
   }
-}
-
-@media only screen and (min-width: 1440px) {
 }
