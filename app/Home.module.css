@@ -46,6 +46,10 @@
   &:focus {
     background-color: var(--button-hover);
   }
+
+  &:active {
+    background-color: var(--button);
+  }
 }
 
 @media only screen and (min-width: 768px) {
