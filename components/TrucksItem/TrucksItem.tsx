@@ -1,13 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import css from "./TrucksItem.module.css";
 import { Truck } from "@/types/truck";
 import Link from "next/link";
+import { useTruckLikeStore } from "@/lib/store/truckLikeStore";
 
 interface TrucksItemProps {
   truck: Truck;
 }
 
 export default function TrucksItem({ truck }: TrucksItemProps) {
+  const { trucksIds, setTruck, deleteTruck } = useTruckLikeStore();
+
+  function handleClickLike() {
+    if (trucksIds.includes(truck.id)) {
+      deleteTruck(truck.id);
+    } else {
+      setTruck(truck.id);
+    }
+  }
+
   return (
     <div className={css.travelCard}>
       <Image
@@ -24,11 +37,14 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
             <p className={css.price}>&euro;{truck.price.toFixed(2)}</p>
             <button
               className={css.like}
-              type="button">
+              type="button"
+              onClick={handleClickLike}
+            >
               <svg
-                className={css.likeIcon}
+                className={`${css.likeIcon}  ${trucksIds.includes(truck.id) ? css.accent : ""}`}
                 width={26}
-                height={24}>
+                height={24}
+              >
                 <use href="/sprite.svg#icon-heart" />
               </svg>
             </button>
@@ -36,10 +52,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
         </div>
         <div className={css.ratingLocationBox}>
           <div className={css.ratingBox}>
-            <svg
-              className={css.ratingIcon}
-              width={16}
-              height={16}>
+            <svg className={css.ratingIcon} width={16} height={16}>
               <use href="/sprite.svg#icon-rating"></use>
             </svg>
             <p className={css.ratingText}>
@@ -47,10 +60,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
             </p>
           </div>
           <div className={css.locationBox}>
-            <svg
-              className={css.locationIcon}
-              width={16}
-              height={16}>
+            <svg className={css.locationIcon} width={16} height={16}>
               <use href="/sprite.svg#icon-map"></use>
             </svg>
             <p className={css.locationText}>{truck.location}</p>
@@ -60,10 +70,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
         <div className={css.categoriesTruck}>
           {truck.transmission && (
             <div className={css.category}>
-              <svg
-                className={css.categoryIcon}
-                width={20}
-                height={20}>
+              <svg className={css.categoryIcon} width={20} height={20}>
                 <use href="/sprite.svg#icon-diagram" />
               </svg>
               <p className={css.categoryText}>{truck.transmission}</p>
@@ -71,10 +78,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.engine && (
             <div className={css.category}>
-              <svg
-                className={css.categoryIcon}
-                width={20}
-                height={20}>
+              <svg className={css.categoryIcon} width={20} height={20}>
                 <use href="/sprite.svg#icon-fuel" />
               </svg>
               <p className={css.categoryText}>{truck.engine}</p>
@@ -82,10 +86,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.kitchen && (
             <div className={css.category}>
-              <svg
-                className={css.categoryIcon}
-                width={20}
-                height={20}>
+              <svg className={css.categoryIcon} width={20} height={20}>
                 <use href="/sprite.svg#icon-cup-hot" />
               </svg>
               <p className={css.categoryText}>Kitchen</p>
@@ -93,10 +94,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.AC && (
             <div className={css.category}>
-              <svg
-                className={css.categoryIcon}
-                width={20}
-                height={20}>
+              <svg className={css.categoryIcon} width={20} height={20}>
                 <use href="/sprite.svg#icon-wind" />
               </svg>
               <p className={css.categoryText}>AC</p>
@@ -104,10 +102,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.radio && (
             <div className={css.category}>
-              <svg
-                className={css.categoryIcon}
-                width={20}
-                height={20}>
+              <svg className={css.categoryIcon} width={20} height={20}>
                 <use href="/sprite.svg#icon-radios" />
               </svg>
               <p className={css.categoryText}>Radio</p>
@@ -115,10 +110,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.bathroom && (
             <div className={css.category}>
-              <svg
-                className={css.categoryIcon}
-                width={20}
-                height={20}>
+              <svg className={css.categoryIcon} width={20} height={20}>
                 <use href="/sprite.svg#icon-shower" />
               </svg>
               <p className={css.categoryText}>Bathroom</p>
@@ -126,10 +118,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.refrigerator && (
             <div className={css.category}>
-              <svg
-                className={css.categoryIcon}
-                width={20}
-                height={20}>
+              <svg className={css.categoryIcon} width={20} height={20}>
                 <use href="/sprite.svg#icon-fridge" />
               </svg>
               <p className={css.categoryText}>Refrigerator</p>
@@ -137,10 +126,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.microwave && (
             <div className={css.category}>
-              <svg
-                className={css.categoryIcon}
-                width={20}
-                height={20}>
+              <svg className={css.categoryIcon} width={20} height={20}>
                 <use href="/sprite.svg#icon-microwave" />
               </svg>
               <p className={css.categoryText}>Microwave</p>
@@ -148,10 +134,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.gas && (
             <div className={css.category}>
-              <svg
-                className={css.categoryIcon}
-                width={20}
-                height={20}>
+              <svg className={css.categoryIcon} width={20} height={20}>
                 <use href="/sprite.svg#icon-gas-stove" />
               </svg>
               <p className={css.categoryText}>Gas</p>
@@ -159,19 +142,14 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.water && (
             <div className={css.category}>
-              <svg
-                className={css.categoryIcon}
-                width={20}
-                height={20}>
+              <svg className={css.categoryIcon} width={20} height={20}>
                 <use href="/sprite.svg#icon-water" />
               </svg>
               <p className={css.categoryText}>Water</p>
             </div>
           )}
         </div>
-        <Link
-          className={css.detailsBtn}
-          href={`/catalog/${truck.id}`}>
+        <Link className={css.detailsBtn} href={`/catalog/${truck.id}`}>
           Show more
         </Link>
       </div>
