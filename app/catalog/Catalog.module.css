@@ -1,0 +1,10 @@
+.catalog {
+  padding-top: 48px;
+  padding-bottom: 52px;
+}
+
+.containerCatalog {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
