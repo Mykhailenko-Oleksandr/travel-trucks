@@ -22,7 +22,7 @@ const truck: Truck = {
   kitchen: false,
   TV: true,
   radio: true,
-  refrigerator: false,
+  refrigerator: true,
   microwave: true,
   gas: false,
   water: true,

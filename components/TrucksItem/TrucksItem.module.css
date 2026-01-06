@@ -1,32 +1,149 @@
 .travelCard {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+
+  max-width: 888px;
   border: 1px solid var(--color-gray-300);
   border-radius: 20px;
   padding: 24px;
 }
 
 .image {
+  width: 292px;
+  height: 320px;
   border-radius: 10px;
   object-fit: cover;
-  height: 320px;
 }
 
 .infoBox {
+  max-width: 524px;
 }
 
 .titleBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
 }
 
 .title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: var(--main);
 }
 
 .priceBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: var(--main);
 }
 
 .like {
+  background-color: transparent;
+  border: none;
 }
 
 .likeIcon {
+  fill: var(--main);
+}
+
+.ratingLocationBox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.ratingBox,
+.locationBox {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ratingIcon {
+  fill: var(--rating);
+}
+
+.ratingText {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--main);
+}
+
+.locationIcon {
+  fill: var(--main);
+}
+
+.locationText {
+  color: var(--main);
+}
+
+.description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 24px;
+}
+
+.categoriesTruck {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 100px;
+  padding: 12px 18px;
+  background-color: var(--badges);
+  mix-blend-mode: multiply;
+}
+
+.categoryIcon {
+  fill: var(--main);
+}
+
+.categoryText {
+  font-weight: 500;
+  color: var(--main);
+  text-transform: capitalize;
+}
+
+.detailsBtn {
+  display: inline-block;
+  border-radius: 200px;
+  padding: 16px 49px;
+  background-color: var(--button);
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+
+  transition: color 250ms ease;
+
+  &:hover,
+  &:focus {
+    background-color: var(--button-hover);
+  }
+
+  &:active {
+    background-color: var(--button);
+  }
 }

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import css from "./TrucksItem.module.css";
 import { Truck } from "@/types/truck";
+import Link from "next/link";
 
 interface TrucksItemProps {
   truck: Truck;
@@ -20,63 +21,160 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
         <div className={css.titleBox}>
           <h3 className={css.title}>{truck.name}</h3>
           <div className={css.priceBox}>
-            <p className={css.price}>{truck.price}</p>
-            <button className={css.like} type="button">
-              <svg className={css.likeIcon} width={26} height={24}>
+            <p className={css.price}>&euro;{truck.price.toFixed(2)}</p>
+            <button
+              className={css.like}
+              type="button">
+              <svg
+                className={css.likeIcon}
+                width={26}
+                height={24}>
                 <use href="/sprite.svg#icon-heart" />
               </svg>
             </button>
           </div>
         </div>
+        <div className={css.ratingLocationBox}>
+          <div className={css.ratingBox}>
+            <svg
+              className={css.ratingIcon}
+              width={16}
+              height={16}>
+              <use href="/sprite.svg#icon-rating"></use>
+            </svg>
+            <p className={css.ratingText}>
+              {truck.rating}({truck.reviews.length}Reviews)
+            </p>
+          </div>
+          <div className={css.locationBox}>
+            <svg
+              className={css.locationIcon}
+              width={16}
+              height={16}>
+              <use href="/sprite.svg#icon-map"></use>
+            </svg>
+            <p className={css.locationText}>{truck.location}</p>
+          </div>
+        </div>
+        <p className={css.description}>{truck.description}</p>
+        <div className={css.categoriesTruck}>
+          {truck.transmission && (
+            <div className={css.category}>
+              <svg
+                className={css.categoryIcon}
+                width={20}
+                height={20}>
+                <use href="/sprite.svg#icon-diagram" />
+              </svg>
+              <p className={css.categoryText}>{truck.transmission}</p>
+            </div>
+          )}
+          {truck.engine && (
+            <div className={css.category}>
+              <svg
+                className={css.categoryIcon}
+                width={20}
+                height={20}>
+                <use href="/sprite.svg#icon-fuel" />
+              </svg>
+              <p className={css.categoryText}>{truck.engine}</p>
+            </div>
+          )}
+          {truck.kitchen && (
+            <div className={css.category}>
+              <svg
+                className={css.categoryIcon}
+                width={20}
+                height={20}>
+                <use href="/sprite.svg#icon-cup-hot" />
+              </svg>
+              <p className={css.categoryText}>Kitchen</p>
+            </div>
+          )}
+          {truck.AC && (
+            <div className={css.category}>
+              <svg
+                className={css.categoryIcon}
+                width={20}
+                height={20}>
+                <use href="/sprite.svg#icon-wind" />
+              </svg>
+              <p className={css.categoryText}>AC</p>
+            </div>
+          )}
+          {truck.radio && (
+            <div className={css.category}>
+              <svg
+                className={css.categoryIcon}
+                width={20}
+                height={20}>
+                <use href="/sprite.svg#icon-radios" />
+              </svg>
+              <p className={css.categoryText}>Radio</p>
+            </div>
+          )}
+          {truck.bathroom && (
+            <div className={css.category}>
+              <svg
+                className={css.categoryIcon}
+                width={20}
+                height={20}>
+                <use href="/sprite.svg#icon-shower" />
+              </svg>
+              <p className={css.categoryText}>Bathroom</p>
+            </div>
+          )}
+          {truck.refrigerator && (
+            <div className={css.category}>
+              <svg
+                className={css.categoryIcon}
+                width={20}
+                height={20}>
+                <use href="/sprite.svg#icon-fridge" />
+              </svg>
+              <p className={css.categoryText}>Refrigerator</p>
+            </div>
+          )}
+          {truck.microwave && (
+            <div className={css.category}>
+              <svg
+                className={css.categoryIcon}
+                width={20}
+                height={20}>
+                <use href="/sprite.svg#icon-microwave" />
+              </svg>
+              <p className={css.categoryText}>Microwave</p>
+            </div>
+          )}
+          {truck.gas && (
+            <div className={css.category}>
+              <svg
+                className={css.categoryIcon}
+                width={20}
+                height={20}>
+                <use href="/sprite.svg#icon-gas-stove" />
+              </svg>
+              <p className={css.categoryText}>Gas</p>
+            </div>
+          )}
+          {truck.water && (
+            <div className={css.category}>
+              <svg
+                className={css.categoryIcon}
+                width={20}
+                height={20}>
+                <use href="/sprite.svg#icon-water" />
+              </svg>
+              <p className={css.categoryText}>Water</p>
+            </div>
+          )}
+        </div>
+        <Link
+          className={css.detailsBtn}
+          href={`/catalog/${truck.id}`}>
+          Show more
+        </Link>
       </div>
     </div>
   );
 }
-
-// {
-//   "id": "1",
-//     "name": "Road Bear C 23-25",
-//     "price": 10000,
-//     "rating": 4.5,
-//     "location": "Ukraine, Kyiv",
-//     "description": "Embadventures, promising comfort, style, and the freedom to explore at your own pace.",
-//     "form": "alcove",
-//     "length": "7.3m",
-//     "width": "2.65m",
-//     "height": "3.65m",
-//     "tank": "208l",
-//     "consumption": "30l/100km",
-//     "transmission": "automatic",
-//     "engine": "diesel", "AC": true,
-//     "bathroom": true,
-//     "kitchen": false,
-//     "TV": true,
-//     "radio": true,
-//     "refrigerator": false,
-//     "microwave": true,
-//     "gas": false,
-//     "water": true,
-//     "gallery": [{
-//       "thumb": "https://ftp.goit.study/img/campers-test-task/1-1.webp",
-//       "original": "https://ftp.goit.study/img/campers-test-task/1-1.webp"
-//   },
-//     {
-//       "thumb": "https://ftp.goit.study/img/campers-test-task/1-2.webp",
-//       "original": "https://ftp.goit.study/img/campers-test-task/1-2.webp"
-//     },
-//     {
-//       "thumb": "https://ftp.goit.study/img/campers-test-task/1-3.webp",
-//       "original": "https://ftp.goit.study/img/campers-test-task/1-3.webp"
-//     }],
-//     "reviews": [
-//       {
-//         "reviewer_name": "Alice",
-//         "reviewer_rating": 5,
-//         "comment": "Exceptional RV! The Road Bear C 23-25 provided a comfortable and enjoyable journey for my family. The amenities were fantastic, and the space was well-utilized. Highly recommended!"
-//       },
-//       {
-//         "reviewer_name": "Bob",
-//         "reviewer_rating": 4,
-//         "comment": "Great RV for a road trip. Spacious and well-equipped. Only minor issues with the bathroom setup, but overall a wonderful experience."
-//       }]
-// }
