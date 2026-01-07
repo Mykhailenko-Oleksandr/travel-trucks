@@ -15,10 +15,10 @@ export async function GET(request: NextRequest) {
       page,
       limit,
       location: request.nextUrl.searchParams.get("location") ?? "",
-      ac: request.nextUrl.searchParams.get("ac") ?? "",
+      AC: request.nextUrl.searchParams.get("AC") ?? "",
       transmission: request.nextUrl.searchParams.get("transmission") ?? "",
       kitchen: request.nextUrl.searchParams.get("kitchen") ?? "",
-      tv: request.nextUrl.searchParams.get("tv") ?? "",
+      TV: request.nextUrl.searchParams.get("TV") ?? "",
       bathroom: request.nextUrl.searchParams.get("bathroom") ?? "",
       form: request.nextUrl.searchParams.get("form") ?? "",
     };

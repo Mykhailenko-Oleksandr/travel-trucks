@@ -1,5 +1,6 @@
 import { FormDataFilter, Truck } from "@/types/truck";
 import { nextServer } from "./api";
+import { ApiError } from "@/app/api/api";
 
 export interface GetTrucksParams {
   page: number;
@@ -17,12 +18,20 @@ export async function getTrucks({
   limit = 4,
   data,
 }: GetTrucksParams) {
-  const res = await nextServer.get<ResponseTrucks>("/campers", {
-    params: {
-      page,
-      limit,
-      ...data,
-    },
-  });
-  return res.data;
+  try {
+    const res = await nextServer.get<ResponseTrucks>("/campers", {
+      params: {
+        page,
+        limit,
+        ...data,
+      },
+    });
+    return res.data;
+  } catch (err: unknown) {
+    const error = err as ApiError;
+    if (error.response?.status === 404) {
+      return { items: [], total: 0 };
+    }
+    throw err;
+  }
 }

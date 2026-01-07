@@ -5,7 +5,11 @@ import css from "./SideBar.module.css";
 import { useTruckFilterStore } from "@/lib/store/truckFilterStore";
 import { ChangeEvent, FormEvent, useEffect } from "react";
 
-export default function SideBar() {
+interface SideBarProps {
+  saveFilter: (value: FormDataFilter) => void;
+}
+
+export default function SideBar({ saveFilter }: SideBarProps) {
   const { truckFilter, setFilter } = useTruckFilterStore();
 
   useEffect(() => {
@@ -34,7 +38,7 @@ export default function SideBar() {
 
     localStorage.setItem("truckFilter", JSON.stringify(dataFilters));
 
-    console.log(dataFilters);
+    saveFilter(dataFilters);
   }
 
   return (
@@ -70,10 +74,10 @@ export default function SideBar() {
           <label className={css.labelCheckbox}>
             <input
               type="checkbox"
-              name="ac"
+              name="AC"
               value="true"
               onChange={handleChange}
-              checked={truckFilter.ac === "true"}
+              checked={truckFilter.AC === "true"}
               className={css.checkbox}
             />
             <span className={css.filterBtn}>
@@ -127,10 +131,10 @@ export default function SideBar() {
           <label className={css.labelCheckbox}>
             <input
               type="checkbox"
-              name="tv"
+              name="TV"
               value="true"
               onChange={handleChange}
-              checked={truckFilter.tv === "true"}
+              checked={truckFilter.TV === "true"}
               className={css.checkbox}
             />
             <span className={css.filterBtn}>

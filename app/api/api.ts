@@ -3,6 +3,7 @@ import axios, { AxiosError } from "axios";
 export type ApiError = AxiosError<{
   error: string;
   response: {
+    status: number;
     message: string;
     validation: { body: { message: string } };
   };

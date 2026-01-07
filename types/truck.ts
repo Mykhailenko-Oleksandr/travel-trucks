@@ -31,10 +31,10 @@ export interface Truck {
 
 export interface FormDataFilter {
   location?: string;
-  ac?: string;
+  AC?: string;
   transmission?: string;
   kitchen?: string;
-  tv?: string;
+  TV?: string;
   bathroom?: string;
   form?: string;
 }

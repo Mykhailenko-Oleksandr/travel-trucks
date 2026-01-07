@@ -3,18 +3,23 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import css from "./Catalog.module.css";
 import { getTrucks } from "@/lib/api/clientApi";
-import { Truck } from "@/types/truck";
+import { FormDataFilter, Truck } from "@/types/truck";
 import SideBar from "@/components/SideBar/SideBar";
 import TrucksList from "@/components/TrucksList/TrucksList";
+import Loader from "@/components/Loader/Loader";
+import { useState } from "react";
 
 export default function CatalogClient() {
+  const [filter, setFilters] = useState<FormDataFilter>({});
+
   const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
     useInfiniteQuery({
-      queryKey: ["trucks"],
+      queryKey: ["trucks", filter],
       queryFn: ({ pageParam = 1 }) =>
         getTrucks({
           page: pageParam,
           limit: 4,
+          data: filter,
         }),
       initialPageParam: 1,
       getNextPageParam: (lastPage, allPages) => {
@@ -38,22 +43,27 @@ export default function CatalogClient() {
     });
   };
 
+  function handleSaveFilter(newFilters: FormDataFilter) {
+    setFilters(newFilters);
+  }
+
   return (
     <section className={css.catalog}>
       <div className={`container ${css.containerCatalog}`}>
-        <SideBar />
+        <SideBar saveFilter={handleSaveFilter} />
 
         {isLoading ? (
-          <p>Loading...</p>
+          <Loader />
         ) : trucks.length > 0 ? (
           <TrucksList
             trucks={trucks}
             hasNextPage={hasNextPage}
             onClickBtn={handleLoadMore}
+            loading={isFetching}
           />
         ) : null}
 
-        {isFetching && <p>Loading...</p>}
+        {isFetching && <Loader />}
       </div>
     </section>
   );
