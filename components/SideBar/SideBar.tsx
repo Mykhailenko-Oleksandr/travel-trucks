@@ -3,17 +3,16 @@
 import css from "./SideBar.module.css";
 
 export default function SideBar() {
-  function handleChangeInput() {
-    console.log("ok");
+  function handleSubmit(formData: FormData) {
+    const location = formData.get("location");
+    const ac = formData.get("ac");
+    console.log("location", location);
+    console.log("ac", ac);
   }
 
-  function handleClickBtnFilter() {}
-
   return (
-    <div className={css.sidebar}>
-      <label
-        htmlFor="location"
-        className={css.cityLabel}>
+    <form action={handleSubmit} className={css.sidebar}>
+      <label htmlFor="location" className={css.cityLabel}>
         Location
         <div className={css.inputBox}>
           <input
@@ -22,124 +21,138 @@ export default function SideBar() {
             id="location"
             name="location"
             placeholder="City"
-            onChange={handleChangeInput}
           />
-          <svg
-            className={css.inputIcon}
-            width={20}
-            height={20}>
+          <svg className={css.inputIcon} width={20} height={20}>
             <use href="/sprite.svg#icon-map"></use>
           </svg>
         </div>
       </label>
       <p className={css.filterTitle}>Filters</p>
-      <p className={css.filterLabel}>Vehicle equipment</p>
-      <div className={css.vehicleFilterBox}>
-        <button
-          onClick={handleClickBtnFilter}
-          type="button"
-          className={css.filterBtn}>
-          <svg
-            className={css.iconBtn}
-            width={32}
-            height={32}>
-            <use href="/sprite.svg#icon-wind"></use>
-          </svg>
-          AC
+      <fieldset>
+        <legend className={css.filterLabel}>Vehicle equipment</legend>
+        <div className={css.vehicleFilterBox}>
+          <label className={css.labelCheckbox}>
+            <input
+              type="checkbox"
+              name="ac"
+              value="true"
+              className={css.checkbox}
+            />
+            <span className={css.filterBtn}>
+              <svg className={css.iconBtn} width={32} height={32}>
+                <use href="/sprite.svg#icon-wind"></use>
+              </svg>
+              AC
+            </span>
+          </label>
+          <label className={css.labelCheckbox}>
+            <input
+              type="checkbox"
+              name="transmission"
+              value="automatic"
+              className={css.checkbox}
+            />
+            <span className={css.filterBtn}>
+              <svg className={css.iconBtn} width={32} height={32}>
+                <use href="/sprite.svg#icon-diagram"></use>
+              </svg>
+              Automatic
+            </span>
+          </label>
+          <label className={css.labelCheckbox}>
+            <input
+              type="checkbox"
+              name="kitchen"
+              value="true"
+              className={css.checkbox}
+            />
+            <span className={css.filterBtn}>
+              <svg className={css.iconBtn} width={32} height={32}>
+                <use href="/sprite.svg#icon-cup-hot"></use>
+              </svg>
+              Kitchen
+            </span>
+          </label>
+          <label className={css.labelCheckbox}>
+            <input
+              type="checkbox"
+              name="tv"
+              value="true"
+              className={css.checkbox}
+            />
+            <span className={css.filterBtn}>
+              <svg className={css.iconBtn} width={32} height={32}>
+                <use href="/sprite.svg#icon-tv"></use>
+              </svg>
+              TV
+            </span>
+          </label>
+          <label className={css.labelCheckbox}>
+            <input
+              type="checkbox"
+              name="bathroom"
+              value="true"
+              className={css.checkbox}
+            />
+            <span className={css.filterBtn}>
+              <svg className={css.iconBtn} width={32} height={32}>
+                <use href="/sprite.svg#icon-shower"></use>
+              </svg>
+              Bathroom
+            </span>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend className={css.filterLabel}>Vehicle type</legend>
+        <div className={css.vehicleFilterBox}>
+          <label className={css.labelCheckbox}>
+            <input
+              type="radio"
+              name="form"
+              value="panelTruck"
+              className={css.checkbox}
+            />
+            <span className={css.filterBtn}>
+              <svg className={css.iconBtn} width={32} height={32}>
+                <use href="/sprite.svg#icon-grid-2"></use>
+              </svg>
+              Van
+            </span>
+          </label>
+          <label className={css.labelCheckbox}>
+            <input
+              type="radio"
+              name="form"
+              value="fullyIntegrated"
+              className={css.checkbox}
+            />
+            <span className={css.filterBtn}>
+              <svg className={css.iconBtn} width={32} height={32}>
+                <use href="/sprite.svg#icon-grid"></use>
+              </svg>
+              Fully Integrated
+            </span>
+          </label>
+          <label className={css.labelCheckbox}>
+            <input
+              type="radio"
+              name="form"
+              value="alcove"
+              className={css.checkbox}
+            />
+            <span className={css.filterBtn}>
+              <svg className={css.iconBtn} width={32} height={32}>
+                <use href="/sprite.svg#icon-grid-3"></use>
+              </svg>
+              Alcove
+            </span>
+          </label>
+        </div>
+        <button type="submit" className={css.formBtn}>
+          Search
         </button>
-        <button
-          onClick={handleClickBtnFilter}
-          type="button"
-          className={css.filterBtn}>
-          <svg
-            className={css.iconBtn}
-            width={32}
-            height={32}>
-            <use href="/sprite.svg#icon-diagram"></use>
-          </svg>
-          Automatic
-        </button>
-        <button
-          onClick={handleClickBtnFilter}
-          type="button"
-          className={css.filterBtn}>
-          <svg
-            className={css.iconBtn}
-            width={32}
-            height={32}>
-            <use href="/sprite.svg#icon-cup-hot"></use>
-          </svg>
-          Kitchen
-        </button>
-        <button
-          onClick={handleClickBtnFilter}
-          type="button"
-          className={css.filterBtn}>
-          <svg
-            className={css.iconBtn}
-            width={32}
-            height={32}>
-            <use href="/sprite.svg#icon-tv"></use>
-          </svg>
-          TV
-        </button>
-        <button
-          onClick={handleClickBtnFilter}
-          type="button"
-          className={css.filterBtn}>
-          <svg
-            className={css.iconBtn}
-            width={32}
-            height={32}>
-            <use href="/sprite.svg#icon-shower"></use>
-          </svg>
-          Bathroom
-        </button>
-      </div>
-      <p className={css.filterLabel}>Vehicle type</p>
-      <div className={css.vehicleFilterBox}>
-        <button
-          onClick={handleClickBtnFilter}
-          type="button"
-          className={css.filterBtn}>
-          <svg
-            className={css.iconBtn}
-            width={32}
-            height={32}>
-            <use href="/sprite.svg#icon-grid-2"></use>
-          </svg>
-          Van
-        </button>
-        <button
-          onClick={handleClickBtnFilter}
-          type="button"
-          className={css.filterBtn}>
-          <svg
-            className={css.iconBtn}
-            width={32}
-            height={32}>
-            <use href="/sprite.svg#icon-grid"></use>
-          </svg>
-          Fully Integrated
-        </button>
-        <button
-          onClick={handleClickBtnFilter}
-          type="button"
-          className={css.filterBtn}>
-          <svg
-            className={css.iconBtn}
-            width={32}
-            height={32}>
-            <use href="/sprite.svg#icon-grid-3"></use>
-          </svg>
-          Alcove
-        </button>
-      </div>
-      <button
-        type="submit"
-        className={css.formBtn}>
-        Search
-      </button>
-    </div>
+      </fieldset>
+    </form>
   );
 }
