@@ -1,6 +1,5 @@
 import { FormDataFilter } from "@/types/truck";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
 
 type DraftStore = {
   truckFilter: FormDataFilter;
@@ -8,19 +7,17 @@ type DraftStore = {
   deleteFilter: () => void;
 };
 
-export const useTruckFilterStore = create<DraftStore>()(
-  persist(
-    (set) => ({
+const savedFilter =
+  typeof window !== "undefined"
+    ? JSON.parse(localStorage.getItem("truckFilter") || "{}")
+    : {};
+
+export const useTruckFilterStore = create<DraftStore>()((set) => ({
+  truckFilter: savedFilter,
+  setFilter: (value) =>
+    set((state) => ({ truckFilter: { ...state.truckFilter, ...value } })),
+  deleteFilter: () =>
+    set(() => ({
       truckFilter: {},
-      setFilter: (value) => set(() => ({ truckFilter: value })),
-      deleteFilter: () =>
-        set(() => ({
-          truckFilter: {},
-        })),
-    }),
-    {
-      name: "truckFilter",
-      partialize: (state) => ({ truckFilter: state.truckFilter }),
-    }
-  )
-);
+    })),
+}));
