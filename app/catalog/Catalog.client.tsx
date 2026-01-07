@@ -25,6 +25,19 @@ export default function CatalogClient() {
 
   const trucks: Truck[] = data?.pages.flatMap((page) => page.items) ?? [];
 
+  const handleLoadMore = () => {
+    const currentScrollPosition = window.pageYOffset;
+
+    fetchNextPage().then(() => {
+      setTimeout(() => {
+        window.scrollTo({
+          top: currentScrollPosition + 600,
+          behavior: "smooth",
+        });
+      }, 100);
+    });
+  };
+
   return (
     <section className={css.catalog}>
       <div className={`container ${css.containerCatalog}`}>
@@ -36,7 +49,7 @@ export default function CatalogClient() {
           <TrucksList
             trucks={trucks}
             hasNextPage={hasNextPage}
-            onClickBtn={() => {}}
+            onClickBtn={handleLoadMore}
           />
         ) : null}
 
