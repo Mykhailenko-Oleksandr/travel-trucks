@@ -1,13 +1,12 @@
 import { cookies } from "next/headers";
 import { nextServer } from "./api";
-import { Truck } from "@/types/truck";
+import { FormDataFilter, Truck } from "@/types/truck";
 
-export async function getTrucks(page: number, limit: number) {
+export async function getTrucks(data?: FormDataFilter) {
   const cookieStore = await cookies();
   const res = await nextServer.get<Truck[]>("/campers", {
     params: {
-      page,
-      limit,
+      ...data,
     },
     headers: {
       Cookie: cookieStore.toString(),

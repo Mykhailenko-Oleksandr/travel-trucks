@@ -2,6 +2,7 @@ import SideBar from "@/components/SideBar/SideBar";
 import TrucksItem from "@/components/TrucksItem/TrucksItem";
 import { Truck } from "@/types/truck";
 import css from "./Catalog.module.css";
+import { getTrucks } from "@/lib/api/serverApi";
 
 const truck: Truck = {
   id: "1",
@@ -58,7 +59,10 @@ const truck: Truck = {
   ],
 };
 
-export default function Catalog() {
+export default async function Catalog() {
+  const res = await getTrucks();
+  console.log(res);
+
   return (
     <section className={css.catalog}>
       <div className={`container ${css.containerCatalog}`}>

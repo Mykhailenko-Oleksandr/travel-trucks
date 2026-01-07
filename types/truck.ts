@@ -28,3 +28,13 @@ export interface Truck {
   gallery: Gallery[];
   reviews: Review[];
 }
+
+export interface FormDataFilter {
+  location?: string;
+  ac?: string;
+  transmission?: string;
+  kitchen?: string;
+  tv?: string;
+  bathroom?: string;
+  form?: string;
+}
