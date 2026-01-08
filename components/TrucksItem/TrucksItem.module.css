@@ -133,6 +133,11 @@
   fill: var(--main);
 }
 
+.categoryIconEmpty {
+  stroke: var(--main);
+  fill: transparent;
+}
+
 .categoryText {
   font-weight: 500;
   font-size: 12px;

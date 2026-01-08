@@ -8,7 +8,7 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
-export async function GET({ params }: Props) {
+export async function GET(request: Request, { params }: Props) {
   try {
     const cookieStore = await cookies();
     const { id } = await params;
@@ -18,6 +18,7 @@ export async function GET({ params }: Props) {
         Cookie: cookieStore.toString(),
       },
     });
+
     return NextResponse.json(res.data, { status: res.status });
   } catch (error) {
     if (isAxiosError(error)) {

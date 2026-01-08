@@ -37,6 +37,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
             <p className={css.price}>&euro;{truck.price.toFixed(2)}</p>
             <button
               className={css.like}
+              aria-label="like truck"
               type="button"
               onClick={handleClickLike}
             >
@@ -126,7 +127,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.microwave && (
             <div className={css.category}>
-              <svg className={css.categoryIcon} width={20} height={20}>
+              <svg className={css.categoryIconEmpty} width={20} height={20}>
                 <use href="/sprite.svg#icon-microwave" />
               </svg>
               <p className={css.categoryText}>Microwave</p>
@@ -134,7 +135,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.gas && (
             <div className={css.category}>
-              <svg className={css.categoryIcon} width={20} height={20}>
+              <svg className={css.categoryIconEmpty} width={20} height={20}>
                 <use href="/sprite.svg#icon-gas-stove" />
               </svg>
               <p className={css.categoryText}>Gas</p>
@@ -142,7 +143,7 @@ export default function TrucksItem({ truck }: TrucksItemProps) {
           )}
           {truck.water && (
             <div className={css.category}>
-              <svg className={css.categoryIcon} width={20} height={20}>
+              <svg className={css.categoryIconEmpty} width={20} height={20}>
                 <use href="/sprite.svg#icon-water" />
               </svg>
               <p className={css.categoryText}>Water</p>

@@ -9,6 +9,7 @@ export async function getTrucks({
   data,
 }: GetTrucksParams) {
   const cookieStore = await cookies();
+
   const res = await nextServer.get<ResponseTrucks>("/campers", {
     params: {
       page,
@@ -19,15 +20,18 @@ export async function getTrucks({
       Cookie: cookieStore.toString(),
     },
   });
+
   return res.data;
 }
 
 export async function getTruckById(id: string) {
   const cookieStore = await cookies();
+
   const res = await nextServer.get<Truck>(`/campers/${id}`, {
     headers: {
       Cookie: cookieStore.toString(),
     },
   });
+
   return res.data;
 }
