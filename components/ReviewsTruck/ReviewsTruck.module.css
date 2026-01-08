@@ -8,9 +8,6 @@
   overflow-y: auto;
 }
 
-.reviewItem {
-}
-
 .titleBox {
   display: flex;
   align-items: center;
@@ -34,14 +31,8 @@
   color: var(--button);
 }
 
-.nameRatingBox {
-}
-
 .name {
   font-weight: 500;
   color: var(--main);
   margin-bottom: 4px;
-}
-
-.comment {
 }
