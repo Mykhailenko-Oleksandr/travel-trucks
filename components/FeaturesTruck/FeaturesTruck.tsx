@@ -8,8 +8,6 @@ interface FeaturesTruckProps {
 }
 
 export default function FeaturesTruck({ truck }: FeaturesTruckProps) {
-  console.log(truck);
-
   return (
     <div className={css.featuresContainer}>
       <div className={css.badgesBox}>
