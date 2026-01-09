@@ -36,7 +36,7 @@ export default function InfoTruck({ truck }: InfoTruckProps) {
         {infoOpen === "feature" && <FeaturesTruck truck={truck} />}
         {infoOpen === "reviews" && <ReviewsTruck reviews={truck.reviews} />}
 
-        <FormBooking />
+        <FormBooking truck={truck} />
       </div>
     </>
   );

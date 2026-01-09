@@ -1,0 +1,119 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px 20px;
+  gap: 48px;
+  width: 100%;
+  max-width: 334px;
+  border-radius: 16px;
+  background: var(--color-white);
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+.closeBtn svg {
+  fill: var(---main);
+}
+
+.title,
+.text,
+.modalButton {
+  font-family: inherit;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main);
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  color: var(--text);
+  max-width: 90%;
+}
+
+.modalButton {
+  display: inline-block;
+  margin: 0 auto;
+  border: none;
+  outline: none;
+  border-radius: 200px;
+  padding: 16px 63px;
+  background-color: var(--button);
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--color-white);
+
+  transition: color 250ms ease;
+
+  &:hover,
+  &:focus {
+    background-color: var(--button-hover);
+  }
+
+  &:active {
+    background-color: var(--button);
+  }
+}
+
+@media (min-width: 768px) {
+  .modalContent {
+    width: 550px;
+    max-width: none;
+    padding: 64px 32px;
+    gap: 48px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .modalContent {
+    width: 768px;
+    max-width: none;
+    padding: 64px;
+    gap: 48px;
+  }
+}
