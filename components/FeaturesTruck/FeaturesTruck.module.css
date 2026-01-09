@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 44px 52px;
+  gap: 20px;
+  padding: 30px 20px;
   border-radius: 10px;
-  max-width: 631px;
-  height: 588px;
+  width: 100%;
   background-color: var(--inputs);
 }
 
@@ -14,7 +14,6 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-  max-height: 160px;
   overflow-y: auto;
 }
 
@@ -40,6 +39,7 @@
 
 .badgeText {
   font-weight: 500;
+  font-size: 14px;
   color: var(--main);
   text-transform: capitalize;
 }
@@ -69,5 +69,20 @@
 .detailsText {
   font-weight: 500;
   color: var(--main);
-  /* text-transform: capitalize; */
+}
+
+@media only screen and (min-width: 1440px) {
+  .featuresContainer {
+    padding: 44px 52px;
+    max-width: 631px;
+    height: 588px;
+  }
+
+  .badgesBox {
+    max-height: 160px;
+  }
+
+  .badgeText {
+    font-size: 16px;
+  }
 }

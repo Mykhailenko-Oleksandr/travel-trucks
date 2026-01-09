@@ -1,6 +1,7 @@
 .btnBox {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 40px;
 }
 
@@ -50,7 +51,22 @@
   padding-top: 44px;
   border-top: 1px solid var(--color-gray-300);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .btnBox {
+    justify-content: flex-start;
+  }
+
+  .infoBookingBox {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
 }

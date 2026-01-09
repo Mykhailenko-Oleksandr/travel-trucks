@@ -1,10 +1,8 @@
 .bookingBox {
   border: 1px solid var(--color-gray-300);
   border-radius: 10px;
-  padding: 44px 57px;
+  padding: 30px 20px;
   width: 100%;
-  max-width: 641px;
-  height: 588px;
 }
 
 .title {
@@ -91,6 +89,15 @@
 .userNameModal {
   text-transform: capitalize;
   color: var(--main);
+}
+
+@media only screen and (min-width: 1440px) {
+  .bookingBox {
+    padding: 44px 57px;
+    width: 100%;
+    max-width: 641px;
+    height: 588px;
+  }
 }
 
 /* Calendar */
