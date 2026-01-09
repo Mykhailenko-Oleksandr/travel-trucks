@@ -16,6 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: "https://travel-trucks-opal-omega.vercel.app",
   title: "TravelTrucks",
   description:
     "Rent modern campervans and trucks for your next adventure. TravelTrucks offers flexible booking, affordable prices, and reliable vehicles.",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     title: "TravelTrucks – Campervan & Truck Rental",
     description:
       "Book your campervan or truck easily with TravelTrucks. Explore new destinations with comfort and reliability.",
-    url: "https://travel-trucks-opal-omega.vercel.app/",
+    url: "https://travel-trucks-opal-omega.vercel.app",
     images: [
       {
         url: "/images/hero.webp",
