@@ -16,13 +16,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "",
-  description: "",
+  title: "TravelTrucks",
+  description:
+    "Rent modern campervans and trucks for your next adventure. TravelTrucks offers flexible booking, affordable prices, and reliable vehicles.",
   openGraph: {
-    title: "",
-    description: "",
+    title: "TravelTrucks – Campervan & Truck Rental",
+    description:
+      "Book your campervan or truck easily with TravelTrucks. Explore new destinations with comfort and reliability.",
     url: "https://",
-    images: [{ url: "" }],
+    images: [
+      {
+        url: "/images/hero.webp",
+      },
+    ],
   },
 };
 

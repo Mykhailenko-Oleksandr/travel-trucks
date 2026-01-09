@@ -2,11 +2,32 @@ import { getTruckById } from "@/lib/api/serverApi";
 import css from "./TruckById.module.css";
 import Image from "next/image";
 import InfoTruck from "@/components/InfoTruck/InfoTruck";
+import { Metadata } from "next";
 
 interface Props {
   params: Promise<{
     id: string;
   }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+
+  const truck = await getTruckById(id);
+  return {
+    title: truck.name,
+    description: truck.description,
+    openGraph: {
+      title: truck.name,
+      description: truck.description,
+      url: `https://`,
+      images: [
+        {
+          url: truck.gallery[0].thumb,
+        },
+      ],
+    },
+  };
 }
 
 export default async function TruckById({ params }: Props) {
