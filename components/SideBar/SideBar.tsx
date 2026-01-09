@@ -7,9 +7,10 @@ import { ChangeEvent, FormEvent, useEffect } from "react";
 
 interface SideBarProps {
   saveFilter: (value: FormDataFilter) => void;
+  onClosed: () => void;
 }
 
-export default function SideBar({ saveFilter }: SideBarProps) {
+export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
   const { truckFilter, setFilter } = useTruckFilterStore();
 
   useEffect(() => {
@@ -37,6 +38,8 @@ export default function SideBar({ saveFilter }: SideBarProps) {
     const dataFilters: FormDataFilter = Object.fromEntries(formData);
 
     localStorage.setItem("truckFilter", JSON.stringify(dataFilters));
+
+    onClosed();
 
     saveFilter(dataFilters);
   }

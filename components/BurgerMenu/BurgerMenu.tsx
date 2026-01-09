@@ -16,7 +16,7 @@ export default function BurgerMenu({ closeMenu, isOpen }: BurgerMenuProps) {
 
   useEffect(() => {
     function handleResize() {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth >= 768) {
         closeMenu();
       }
     }
@@ -56,23 +56,29 @@ export default function BurgerMenu({ closeMenu, isOpen }: BurgerMenuProps) {
     <div
       ref={menuRef}
       className={`${css.backdrop} ${isOpen ? css.modalIsOpen : ""}`}
-      onClick={handleClickBackdrop}
-    >
+      onClick={handleClickBackdrop}>
       <div className={`container ${css.mobileMenu} `}>
         <div className={css.mobileMenuTop}>
           <Link
             className={css.logo}
             href="/"
             aria-label="logotype"
-            onClick={closeMenu}
-          >
-            <svg className={css.logoIcon} width={136} height={16}>
+            onClick={closeMenu}>
+            <svg
+              className={css.logoIcon}
+              width={136}
+              height={16}>
               <use href="/sprite.svg#icon-logo" />
             </svg>
           </Link>
 
-          <button className={css.menuCloseBtn} onClick={closeMenu}>
-            <svg className={css.menuIcon} width="24" height="24">
+          <button
+            className={css.menuCloseBtn}
+            onClick={closeMenu}>
+            <svg
+              className={css.menuIcon}
+              width="24"
+              height="24">
               <use href="/sprite.svg#icon-close" />
             </svg>
           </button>
@@ -82,15 +88,13 @@ export default function BurgerMenu({ closeMenu, isOpen }: BurgerMenuProps) {
           <Link
             className={`${css.navigationLink} ${pathname === "/" ? css.accent : ""}`}
             href="/"
-            onClick={closeMenu}
-          >
+            onClick={closeMenu}>
             Home
           </Link>
           <Link
             className={`${css.navigationLink} ${pathname === "/catalog" ? css.accent : ""}`}
             href="/catalog"
-            onClick={closeMenu}
-          >
+            onClick={closeMenu}>
             Catalog
           </Link>
         </nav>

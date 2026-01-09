@@ -10,6 +10,21 @@
 }
 
 .btnFilters {
+  border: 1px solid var(--color-gray-300);
+  border-radius: 200px;
+  background-color: transparent;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--main);
+
+  transition: border-color 250ms ease;
+
+  &:hover,
+  &:focus {
+    border-color: var(--button-hover);
+  }
 }
 
 @media only screen and (min-width: 768px) {

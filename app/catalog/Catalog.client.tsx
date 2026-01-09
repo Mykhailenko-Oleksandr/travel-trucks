@@ -7,11 +7,29 @@ import { FormDataFilter, Truck } from "@/types/truck";
 import SideBar from "@/components/SideBar/SideBar";
 import TrucksList from "@/components/TrucksList/TrucksList";
 import Loader from "@/components/Loader/Loader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function CatalogClient() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const [tabletWidth, setTabletWidth] = useState(true);
   const [filter, setFilters] = useState<FormDataFilter>({});
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth >= 768) {
+        setTabletWidth(true);
+      } else {
+        setTabletWidth(false);
+      }
+    }
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [setTabletWidth]);
 
   const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
     useInfiniteQuery({
@@ -54,12 +72,16 @@ export default function CatalogClient() {
         <button
           type="button"
           className={css.btnFilters}
-          onClick={() => setIsSideBarOpen((prev) => !prev)}
-        >
-          Filters
+          onClick={() => setIsSideBarOpen((prev) => !prev)}>
+          {isSideBarOpen || tabletWidth ? "Close filters" : "Filters"}
         </button>
 
-        <SideBar saveFilter={handleSaveFilter} />
+        {(isSideBarOpen || tabletWidth) && (
+          <SideBar
+            saveFilter={handleSaveFilter}
+            onClosed={() => setIsSideBarOpen(false)}
+          />
+        )}
 
         {isLoading ? (
           <Loader />
