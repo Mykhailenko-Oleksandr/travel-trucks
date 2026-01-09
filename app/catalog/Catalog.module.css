@@ -5,6 +5,22 @@
 
 .containerCatalog {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.btnFilters {
+}
+
+@media only screen and (min-width: 768px) {
+  .btnFilters {
+    display: none;
+  }
+
+  .containerCatalog {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 64px;
+  }
 }

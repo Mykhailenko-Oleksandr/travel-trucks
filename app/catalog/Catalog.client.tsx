@@ -10,6 +10,7 @@ import Loader from "@/components/Loader/Loader";
 import { useState } from "react";
 
 export default function CatalogClient() {
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [filter, setFilters] = useState<FormDataFilter>({});
 
   const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
@@ -50,6 +51,14 @@ export default function CatalogClient() {
   return (
     <section className={css.catalog}>
       <div className={`container ${css.containerCatalog}`}>
+        <button
+          type="button"
+          className={css.btnFilters}
+          onClick={() => setIsSideBarOpen((prev) => !prev)}
+        >
+          Filters
+        </button>
+
         <SideBar saveFilter={handleSaveFilter} />
 
         {isLoading ? (
