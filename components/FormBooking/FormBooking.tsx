@@ -125,6 +125,7 @@ export default function FormBooking({ truck }: FormBookingProps) {
                   className={css.input}
                   name="date"
                   placeholderText="Booking date*"
+                  autoComplete="off"
                   selected={values.date}
                   onChange={(date: Date | null) => {
                     setFieldValue("date", date);
