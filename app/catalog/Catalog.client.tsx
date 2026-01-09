@@ -92,7 +92,9 @@ export default function CatalogClient() {
             onClickBtn={handleLoadMore}
             loading={isFetching}
           />
-        ) : null}
+        ) : (
+          <p>Nothing found for your query</p>
+        )}
 
         {isFetching && <Loader />}
       </div>

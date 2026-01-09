@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "TravelTrucks – Vehicle Catalog",
     description:
       "Discover our catalog of campervans and trucks for rent. Choose the right vehicle for your adventure.",
-    url: "https://",
+    url: "https://travel-trucks-opal-omega.vercel.app/catalog",
     images: [
       {
         url: "/images/hero.webp",
