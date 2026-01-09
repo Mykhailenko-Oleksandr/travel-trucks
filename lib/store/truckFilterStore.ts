@@ -7,17 +7,9 @@ type DraftStore = {
   deleteFilter: () => void;
 };
 
-const savedFilter =
-  typeof window !== "undefined"
-    ? JSON.parse(localStorage.getItem("truckFilter") || "{}")
-    : {};
-
 export const useTruckFilterStore = create<DraftStore>()((set) => ({
-  truckFilter: savedFilter,
+  truckFilter: {},
   setFilter: (value) =>
     set((state) => ({ truckFilter: { ...state.truckFilter, ...value } })),
-  deleteFilter: () =>
-    set(() => ({
-      truckFilter: {},
-    })),
+  deleteFilter: () => set(() => ({ truckFilter: {} })),
 }));

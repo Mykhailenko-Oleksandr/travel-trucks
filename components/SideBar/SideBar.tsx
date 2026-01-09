@@ -3,7 +3,7 @@
 import { FormDataFilter } from "@/types/truck";
 import css from "./SideBar.module.css";
 import { useTruckFilterStore } from "@/lib/store/truckFilterStore";
-import { ChangeEvent, FormEvent, useEffect } from "react";
+import { ChangeEvent, FormEvent, MouseEvent, useEffect } from "react";
 
 interface SideBarProps {
   saveFilter: (value: FormDataFilter) => void;
@@ -20,16 +20,26 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
     }
   }, [setFilter]);
 
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    let value: string | null;
+  function handleRadioClick(e: MouseEvent<HTMLInputElement>) {
+    const { name, value } = e.currentTarget;
+    const key = name as keyof FormDataFilter;
 
-    if (e.target.type === "checkbox") {
-      value = e.target.checked ? e.target.value : null;
+    if (truckFilter[key] === value) {
+      setFilter({ [key]: undefined });
     } else {
-      value = e.target.value;
+      setFilter({ [key]: value });
+    }
+  }
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    const { type, name, value, checked } = e.currentTarget;
+
+    if (type === "checkbox") {
+      setFilter({ [name]: checked ? value : undefined });
+      return;
     }
 
-    setFilter({ ...truckFilter, [e.target.name]: value });
+    setFilter({ [name]: value });
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -39,9 +49,8 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
 
     localStorage.setItem("truckFilter", JSON.stringify(dataFilters));
 
-    onClosed();
-
     saveFilter(dataFilters);
+    onClosed();
   }
 
   return (
@@ -60,7 +69,7 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
             name="location"
             placeholder="City"
             onChange={handleChange}
-            defaultValue={truckFilter.location}
+            value={truckFilter.location ?? ""}
           />
           <svg
             className={css.inputIcon}
@@ -70,7 +79,9 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
           </svg>
         </div>
       </label>
+
       <p className={css.filterTitle}>Filters</p>
+
       <fieldset>
         <legend className={css.filterLabel}>Vehicle equipment</legend>
         <div className={css.vehicleFilterBox}>
@@ -93,6 +104,7 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
               AC
             </span>
           </label>
+
           <label className={css.labelCheckbox}>
             <input
               type="checkbox"
@@ -112,6 +124,7 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
               Automatic
             </span>
           </label>
+
           <label className={css.labelCheckbox}>
             <input
               type="checkbox"
@@ -131,6 +144,7 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
               Kitchen
             </span>
           </label>
+
           <label className={css.labelCheckbox}>
             <input
               type="checkbox"
@@ -150,6 +164,7 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
               TV
             </span>
           </label>
+
           <label className={css.labelCheckbox}>
             <input
               type="checkbox"
@@ -171,6 +186,7 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
           </label>
         </div>
       </fieldset>
+
       <fieldset>
         <legend className={css.filterLabel}>Vehicle type</legend>
         <div className={css.vehicleFilterBox}>
@@ -179,8 +195,9 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
               type="radio"
               name="form"
               value="panelTruck"
-              onChange={handleChange}
+              onClick={handleRadioClick}
               checked={truckFilter.form === "panelTruck"}
+              onChange={() => {}}
               className={css.checkbox}
             />
             <span className={css.filterBtn}>
@@ -193,13 +210,15 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
               Van
             </span>
           </label>
+
           <label className={css.labelCheckbox}>
             <input
               type="radio"
               name="form"
               value="fullyIntegrated"
-              onChange={handleChange}
+              onClick={handleRadioClick}
               checked={truckFilter.form === "fullyIntegrated"}
+              onChange={() => {}}
               className={css.checkbox}
             />
             <span className={css.filterBtn}>
@@ -212,13 +231,15 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
               Fully Integrated
             </span>
           </label>
+
           <label className={css.labelCheckbox}>
             <input
               type="radio"
               name="form"
               value="alcove"
-              onChange={handleChange}
+              onClick={handleRadioClick}
               checked={truckFilter.form === "alcove"}
+              onChange={() => {}}
               className={css.checkbox}
             />
             <span className={css.filterBtn}>
@@ -232,6 +253,7 @@ export default function SideBar({ saveFilter, onClosed }: SideBarProps) {
             </span>
           </label>
         </div>
+
         <button
           type="submit"
           className={css.formBtn}>
