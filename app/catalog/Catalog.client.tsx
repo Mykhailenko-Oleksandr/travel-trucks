@@ -69,10 +69,12 @@ export default function CatalogClient() {
   return (
     <section className={css.catalog}>
       <div className={`container ${css.containerCatalog}`}>
+        <h2 className={css.titleHidden}>Catalog</h2>
         <button
           type="button"
           className={css.btnFilters}
-          onClick={() => setIsSideBarOpen((prev) => !prev)}>
+          onClick={() => setIsSideBarOpen((prev) => !prev)}
+        >
           {isSideBarOpen || tabletWidth ? "Close filters" : "Filters"}
         </button>
 
