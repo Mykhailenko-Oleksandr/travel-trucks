@@ -41,10 +41,7 @@ export default async function TruckById({ params }: Props) {
         <h2 className={css.title}>{truck.name}</h2>
         <div className={css.ratingLocationBox}>
           <div className={css.ratingBox}>
-            <svg
-              className={css.ratingIcon}
-              width={16}
-              height={16}>
+            <svg className={css.ratingIcon} width={16} height={16}>
               <use href="/sprite.svg#icon-rating"></use>
             </svg>
             <p className={css.ratingText}>
@@ -52,10 +49,7 @@ export default async function TruckById({ params }: Props) {
             </p>
           </div>
           <div className={css.locationBox}>
-            <svg
-              className={css.locationIcon}
-              width={16}
-              height={16}>
+            <svg className={css.locationIcon} width={16} height={16}>
               <use href="/sprite.svg#icon-map"></use>
             </svg>
             <p className={css.locationText}>{truck.location}</p>
@@ -65,9 +59,7 @@ export default async function TruckById({ params }: Props) {
         <div className={css.imagesBox}>
           {truck.gallery.length > 0 &&
             truck.gallery.map((image) => (
-              <div
-                key={image.thumb}
-                className={css.imgBox}>
+              <div key={image.thumb} className={css.imgBox}>
                 <Image
                   src={image.thumb}
                   alt="Image truck"

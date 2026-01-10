@@ -143,7 +143,6 @@ export default function FormBooking({ truck }: FormBookingProps) {
               <div className={css.inputBox}>
                 <Field
                   as="textarea"
-                  type="text"
                   name="comment"
                   placeholder="Comment"
                   className={css.textarea}
