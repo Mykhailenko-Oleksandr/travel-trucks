@@ -1,8 +1,11 @@
 import { getTruckById } from "@/lib/api/serverApi";
-import css from "./TruckById.module.css";
-import Image from "next/image";
-import InfoTruck from "@/components/InfoTruck/InfoTruck";
 import { Metadata } from "next";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
+import TruckByIdClient from "./TruckById.client";
 
 interface Props {
   params: Promise<{
@@ -33,46 +36,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function TruckById({ params }: Props) {
   const { id } = await params;
 
-  const truck = await getTruckById(id);
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ["truck", id],
+    queryFn: () => getTruckById(id),
+  });
 
   return (
-    <section className={css.truck}>
-      <div className="container">
-        <h2 className={css.title}>{truck.name}</h2>
-        <div className={css.ratingLocationBox}>
-          <div className={css.ratingBox}>
-            <svg className={css.ratingIcon} width={16} height={16}>
-              <use href="/sprite.svg#icon-rating"></use>
-            </svg>
-            <p className={css.ratingText}>
-              {truck.rating}({truck.reviews.length} Reviews)
-            </p>
-          </div>
-          <div className={css.locationBox}>
-            <svg className={css.locationIcon} width={16} height={16}>
-              <use href="/sprite.svg#icon-map"></use>
-            </svg>
-            <p className={css.locationText}>{truck.location}</p>
-          </div>
-        </div>
-        <p className={css.price}>&euro;{truck.price.toFixed(2)}</p>
-        <div className={css.imagesBox}>
-          {truck.gallery.length > 0 &&
-            truck.gallery.map((image) => (
-              <div key={image.thumb} className={css.imgBox}>
-                <Image
-                  src={image.thumb}
-                  alt="Image truck"
-                  width={292}
-                  height={312}
-                  className={css.truckImg}
-                />
-              </div>
-            ))}
-        </div>
-        <p className={css.description}>{truck.description}</p>
-        <InfoTruck truck={truck} />
-      </div>
-    </section>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <TruckByIdClient />
+    </HydrationBoundary>
   );
 }
