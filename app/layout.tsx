@@ -16,7 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: "https://travel-trucks-opal-omega.vercel.app",
+  metadataBase: new URL("https://travel-trucks-opal-omega.vercel.app"),
   title: "TravelTrucks",
   description:
     "Rent modern campervans and trucks for your next adventure. TravelTrucks offers flexible booking, affordable prices, and reliable vehicles.",
