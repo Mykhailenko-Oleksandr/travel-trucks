@@ -91,6 +91,8 @@
   display: block;
   margin: 0 auto;
   border-radius: 200px;
+  border: none;
+  outline: none;
   padding: 16px 49px;
   background-color: var(--button);
 

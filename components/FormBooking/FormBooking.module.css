@@ -102,6 +102,10 @@
 
 /* Calendar */
 
+:global(.react-datepicker-wrapper) {
+  width: 100%;
+}
+
 :global(.react-datepicker) {
   font-family: var(--font-inter);
   border-radius: 12px;
